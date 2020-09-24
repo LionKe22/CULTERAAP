@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "142129898935",
+    "firebase_url": "https://culterapp.firebaseio.com",
+    "project_id": "culterapp",
+    "storage_bucket": "culterapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:142129898935:android:beef87ffafa49d25c3b432",
+        "android_client_info": {
+          "package_name": "com.testdb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "142129898935-f0ou8kbme3p6b18c2tvksri95b2381q3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.testdb",
+            "certificate_hash": "0ac0bef92dc4171a2616998aa10cc9ef234c0b43"
+          }
+        },
+        {
+          "client_id": "142129898935-d69ias7ccil70ciahpjkg5rkn9nfvb4l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFPrWdPceR8lB20lJdhnipHlyOj558z2Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "142129898935-d69ias7ccil70ciahpjkg5rkn9nfvb4l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

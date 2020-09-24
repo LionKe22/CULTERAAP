@@ -1,0 +1,1395 @@
+﻿Build1=Default,com.testdb
+File1=Back1.png
+File10=googlelogin2.png
+File11=humedad.png
+File12=login.bal
+File13=loginblue.png
+File14=logo_CULTERAPP-removebg-preview.png
+File15=lost_password.png
+File16=main.bal
+File17=main2.bal
+File18=nuevo user.png
+File19=pant1.bal
+File2=createemailaccount.bal
+File20=pantbtn1.bal
+File21=Pantbtn2.bal
+File22=PantBtn3.bal
+File23=phonelogin.png
+File24=pngegg (5).png
+File25=pngocean.com (1).png
+File26=pngocean.com.png
+File27=resetpassword.bal
+File28=tanque.png
+File3=emaillogin.bal
+File4=emaillogin2.png
+File5=exit.png
+File6=exit1.png
+File7=fondo2.jpg
+File8=fondo4.jpg
+File9=fondo5.jpg
+FileGroup1=Default Group
+FileGroup10=Default Group
+FileGroup11=Default Group
+FileGroup12=Default Group
+FileGroup13=Default Group
+FileGroup14=Default Group
+FileGroup15=Default Group
+FileGroup16=Default Group
+FileGroup17=Default Group
+FileGroup18=Default Group
+FileGroup19=Default Group
+FileGroup2=Default Group
+FileGroup20=Default Group
+FileGroup21=Default Group
+FileGroup22=Default Group
+FileGroup23=Default Group
+FileGroup24=Default Group
+FileGroup25=Default Group
+FileGroup26=Default Group
+FileGroup27=Default Group
+FileGroup28=Default Group
+FileGroup3=Default Group
+FileGroup4=Default Group
+FileGroup5=Default Group
+FileGroup6=Default Group
+FileGroup7=Default Group
+FileGroup8=Default Group
+FileGroup9=Default Group
+Group=Default Group
+Library1=core
+Library10=ime
+Library11=javaobject
+Library12=phone
+Library13=runtimepermissions
+Library14=xui views
+Library2=json
+Library3=firebaserealtimedatabase
+Library4=okhttputils2
+Library5=b4xcollections
+Library6=dateutils
+Library7=firebaseauthemail
+Library8=firebaseauth
+Library9=firebaseauthphone
+ManifestCode=''This code will be applied to the manifest file during compilation.~\n~''You do not need to modify it in most cases.~\n~''See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~'AddManifestText(~\n~'<uses-sdk android:minSdkVersion="5" android:targetSdkVersion="28"/>~\n~'<supports-screens android:largeScreens="true" ~\n~'    android:normalScreens="true" ~\n~'    android:smallScreens="true" ~\n~'    android:anyDensity="true"/>)~\n~'SetApplicationAttribute(android:icon, "@drawable/icon")~\n~'SetApplicationAttribute(android:label, "$LABEL$")~\n~'CreateResourceFromFile(Macro, Themes.DarkTheme)~\n~'End of default text.~\n~'This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="5" android:targetSdkVersion="28"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.DarkTheme)~\n~~\n~'HABILTA CONEXION SIN HTTPS~\n~ CreateResourceFromFile(Macro, Core.NetworkClearText)~\n~'End of default text.~\n~'************ Google Play Services Base ************~\n~CreateResourceFromFile(Macro, FirebaseAnalytics.GooglePlayBase)~\n~'************ Google Play Services Base (end) ************~\n~'************ Firebase Base ************~\n~CreateResourceFromFile(Macro, FirebaseAnalytics.Firebase)~\n~'************ Firebase Base (end) ************~\n~'************ Firebase Notifications ************~\n~CreateResourceFromFile(Macro, FirebaseNotifications.FirebaseNotifications)~\n~'************ Firebase Notifications (end)************~\n~'************ Firebase Auth ************~\n~CreateResourceFromFile(Macro, FirebaseAuth.FirebaseAuth)~\n~'************ Firebase Auth (end) ************~\n~AddPermission(android.permission.INTERNET) ' Allows applications to open network sockets.~\n~AddPermission(android.permission.ACCESS_NETWORK_STATE) ' Allows applications to access information about networks.
+Module1=Starter
+NumberOfFiles=28
+NumberOfLibraries=14
+NumberOfModules=1
+Version=9.801
+@EndOfDesignText@
+'=====================================================================================================
+'============================= SECCION DE COMENTARIOS  ===============================================
+'=====================================================================================================
+'DESCRIPCION: Este proyecto me permite enlazar un aplicativo creado mediante B4A + Firebase + ESP32 lodrando
+'visualizar y controlar variables en la app, las cuales provienen del esp32(hatware) se almacenan en 
+'firebase
+'DESARROLLADORES: Kevin Arbey Alarcon Leon                        cod:201512409
+'                 Duvan javier cubides niño                           201511845
+'============================ Tener en cuenta =======================================================
+'usuario1=kevin
+'password=123
+'=========================== Tiempos de desarrollo ==================================================
+'      ETAPA 1
+' 1). Generar pantalla de Login                                  = 20 min   
+' 2). Generar y configurar Database en Firebase                  = 10 min
+' 3). Crear enlace entre B4A y firebase                          = 6  Horas
+' 4). G	enerar pantalla de on/off de los leds                    = 10 min
+' 5). Instalar y configurar ESP32                                = 20 min
+' 6). Codificar rutina en Arduino para tarjeta esp32 (on/off-led)= 1 hora  (enlace completo y exitoso)
+'      ETAPA 2
+' 7). Generar pantalla de menu                                   = 10 min
+' 8). Generar pantalla de visualizacion de nivel de tanques      = 20 min
+'     y on/off de tanques de riego y tanque de resiclado de agua
+'=====================================================================================================
+'============================= FIN DE COMENTARIOS ====================================================
+'=====================================================================================================
+ #Region  Project Attributes 
+	#ApplicationLabel: Culterapp
+	#VersionCode: 1
+	#VersionName: 1.0.1
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: Portrait
+	#CanInstallToExternalStorage: False
+	#AdditionalJar: com.google.android.gms:play-services-base
+	#AdditionalJar: com.google.firebase:firebase-core
+    #AdditionalJar: com.google.firebase:firebase-database
+	#MultiDex: True
+#End Region
+
+#Region  Activity Attributes 
+	#FullScreen: True
+	#IncludeTitle: True		
+#End Region
+
+#BridgeLogger: true
+
+Sub Process_Globals
+	'These global variables will be declared once when the application starts.
+	'These variables can be accessed from all modules.
+	Dim gb_phoneVerificationSuccess As Boolean
+	Dim gs_verificationID, gs_phoneNumber As String
+	Private auth As FirebaseAuth
+	Private authphone As FirebaseAuthPhoneWrapper
+	Private authemail As FirebaseAuthEmailWrapper
+	Type DBCommand (Name As String, Parameters() As Object)
+	Type DBResult (Tag As Object, Columns As Map, Rows As List)
+	'=========================================================
+	Dim mapPostValues As Map
+	Dim childUpdates As Map
+	Dim mapPostValues1 As Map
+	Dim childUpdates1 As Map
+	Dim mapPostValues3 As Map
+	Dim childUpdates3 As Map
+	Dim keynode As String
+	Dim TIEMPO As String=""
+	Dim RHORA As String=""
+	
+	End Sub
+     
+Sub Globals
+	'These global variables will be redeclared each time the activity is created.
+	'These variables can only be accessed from this module.
+	Private RP As RuntimePermissions
+	Dim ime As IME
+	Private b_phoneLogin As Button
+	Private fet_phonenumber As B4XFloatTextField
+	Private fet_smsCode As B4XFloatTextField
+	Private b_PhoneSignIn As Button
+	Private iv_exitPhoneLogin As ImageView
+	Private b_emailLogin As Button
+	Private b_googleLogin As Button
+	Dim gs_signInMethod As String
+	Private fet_emailReset As B4XFloatTextField
+	Private b_emailResetPassword As Button
+	Private lblRegister As Label
+	Private fet_email As B4XFloatTextField
+	Private b_emailSignIn As Button
+	Private fet_regemail As B4XFloatTextField
+	Private fet_regemailpassword As B4XFloatTextField
+	Private fet_regemailpassword2 As B4XFloatTextField
+	Private fet_emailpassword As B4XFloatTextField
+	Private labelLogInMethod As Label
+	Private LabelUser As Label
+	Private b_setPhoneNumber As Button
+	Private fet_setphonenumber As B4XFloatTextField
+	'=============================================
+	Dim realtime As FirebaseDatabase
+	Dim ref As DatabaseReference
+	Private BtnOn As Button
+	Private BtnOff As Button
+	Private edtUSUARIO As EditText
+	Private edtContraseña As EditText
+	Private BtnSalir As Button
+	Private BtnAtras As Button
+	Private LblNivel As Label
+	Private LblNivel2 As Label
+	Private BtnON2 As Button
+	Private BtnOFF2 As Button
+	Private BtnLuces As Button
+	Private BtnRojo As Button
+	Private BtnAzul As Button
+	Private BtnAmarillo As Button
+	Private LblLuces As Label
+	Private BtnSensado As Button
+	Private LblSn1 As Label
+	Private LblSn2 As Label
+	Private LblSn3 As Label
+	Private LblLuces2 As Label
+	Private LblLuces3 As Label
+	Private BtnOff1 As Button
+	Private BtnOff3 As Button
+	Private BtnOff_2 As Button
+	Private LblEstado2 As Label
+	Private LblEstado1 As Label
+	Private BtnOn_3 As Button
+	Private LblEstado3 As Label
+	Private LblPrescripcion As Label
+	Private edtHora As EditText
+	Private edtPRiego As EditText
+	Private LblHora As Label
+	Private edtHoraAnt As Label
+	Private BtnGuardar As Button
+End Sub
+
+'-----------------------------------------
+Sub Activity_Create(FirstTime As Boolean)
+	'-----------------------------------------
+'	edtUSUARIO.Color = Colors.Transparent
+'	edtContraseña.COLOR = Colors.Transparent
+	realtime.Initialize("Realtime")
+	realtime.PersistenceEnabled = True
+	realtime.goOnline
+		
+	ref.Initialize("Reference",  realtime.getReferencefromUrl( "https://culterapp.firebaseio.com/" ), "")
+	'ref.Initialize("Reference",realtime.getReference2( "") , "root")
+	ref.addChildEventListener
+	ref.addListenerForSingleValueEvent
+	ref.addValueEventListener
+'	Activity.Initialize("Main")
+'	Activity.RemoveAllViews
+'	Activity.LoadLayout("Main")
+	
+	If FirstTime Then
+		ime.Initialize("e_ime")
+		gb_phoneVerificationSuccess = False
+		
+		If CheckForGooglePlayServices = True Then
+			ToastMessageShow("Google play services active!",True)
+		End If
+		Activity.Initialize("Main")
+		Activity.RemoveAllViews
+		Activity.LoadLayout("Main")
+		'Activity.LoadLayout("Main")
+		RP.CheckAndRequest(RP.PERMISSION_READ_PHONE_STATE)
+		Wait For Activity_PermissionResult (Permission As String, Result As Boolean)
+		If Result = False Then
+			MsgboxAsync("Phone access permission not allowed!", "Alert...")
+			ExitApplication
+		End If
+		
+		
+		read_signInMethod ' get preferred method from firebase.ini
+		If gs_signInMethod = "googleLogin" Then
+			'If google account Is already initialized Then logs in
+			' auth_signedin event is triggered and "main2" layout is loaded
+			auth.Initialize("auth")
+			If auth.CurrentUser.IsInitialized Then Auth_SignedIn(auth.CurrentUser)
+		else If gs_signInMethod = "phoneLogin" Then 'optionally you can use phoneLogin if already validated.
+			authphone.Initialize("authphone")
+			Dim ls_phoneNumber As String = getPhoneNumber
+			If ls_phoneNumber <> "" Then gs_phoneNumber = ls_phoneNumber
+			If gs_phoneNumber = "" Then
+				setPhoneNumber
+			Else
+				authphone.startPhoneNumberVerification(gs_phoneNumber)
+			End If
+			' If phone number already validated triggers "authphone_phonesignedin" event
+			' otherwise if auto-verification, triggers "authphone_phonesignedin" event after sms is received.
+			' If auto-verification is not supported it must be manually inserted in phonelogin layout.
+		Else If gs_signInMethod = "emailLogin" Then
+			'authemail.Initialize("authemail")
+			'Activity.RemoveAllViews
+			'Activity.LoadLayout("emaillogin")
+		End If
+	End If
+	'==================================================================================================
+	childUpdates1.Initialize
+	mapPostValues1.Initialize
+	childUpdates3.Initialize
+	mapPostValues3.Initialize
+	
+	
+	mapPostValues1.Put("TIPO1", "OFF")
+	Dim keynode1 As String = "CULTIVO/LUCES"
+	childUpdates1.Put(  "/" & keynode1,  mapPostValues1)
+	ref.push
+	ref.updateChildren( childUpdates1)
+	
+	mapPostValues1.Put("TIPO2", "OFF")
+	Dim keynode1 As String = "CULTIVO/LUCES"
+	childUpdates1.Put(  "/" & keynode1,  mapPostValues1)
+	ref.push
+	ref.updateChildren( childUpdates1)
+	
+	mapPostValues1.Put("TIPO3", "OFF")
+	Dim keynode1 As String = "CULTIVO/LUCES"
+	childUpdates1.Put(  "/" & keynode1,  mapPostValues1)
+	ref.push
+	ref.updateChildren( childUpdates1)
+	'==================================================================================================
+	childUpdates.Initialize
+	mapPostValues.Initialize
+	
+	mapPostValues.Put("VALVULA_I", "OFF")
+	keynode = "CULTIVO/VALVULAS"
+	childUpdates.Put(  "/" & keynode,  mapPostValues)
+	ref.updateChildren( childUpdates)
+	ref.push
+	
+	mapPostValues.Put("VALVULA_R", "OFF")
+	keynode = "CULTIVO/VALVULAS"
+	childUpdates.Put(  "/" & keynode,  mapPostValues)
+	ref.updateChildren( childUpdates)
+	ref.push
+	'============================================
+	Dim link As String ="https://culterapp.firebaseio.com/CULTIVO/TIEMPO.json"
+	
+	Dim job22 As HttpJob
+	job22.Initialize(link, Me)
+	job22.Download(link)
+	Wait For (job22) JobDone(job22 As HttpJob)
+	
+	If job22.Success Then
+	Dim res As String
+	res = job22.GetString
+	Dim parser As JSONParser
+	parser.Initialize(res)
+		
+	If res <> False Then
+		Dim m1 As Map =	parser.NextObject
+		RHORA = " " &  m1.Get("HORA")
+		RPREESCRIBIR= " " &  m1.Get("PREESCRIBIR")
+		
+	End If
+	End If
+	
+	
+	mapPostValues3.Put("PREESCRIBIR", "OFF")
+	Dim keynode3 As String = "CULTIVO/TIEMPO"
+	childUpdates3.Put(  "/" & keynode3,  mapPostValues3)
+	ref.push
+	ref.updateChildren( childUpdates3)
+	
+	mapPostValues3.Put("HORA", RHORA)
+	Dim keynode3 As String = "CULTIVO/TIEMPO"
+	childUpdates3.Put(  "/" & keynode3,  mapPostValues3)
+	ref.push
+	ref.updateChildren( childUpdates3)
+	
+'	mapPostValues3.Put("PRIEGO", "0.0")
+'	Dim keynode3 As String = "CULTIVO/TIEMPO"
+'	childUpdates3.Put(  "/" & keynode3,  mapPostValues3)
+'	ref.push
+'	ref.updateChildren( childUpdates3)
+	
+End Sub
+
+
+
+'---------------------------------------------
+Sub MainForm_Resize (Width As Double, Height As Double)
+	'---------------------------------------------
+	
+End Sub
+
+
+'------------------------------------------
+Sub Activity_Pause (UserClosed As Boolean)
+	
+
+End Sub
+
+'=====================================================================================================
+'============================= DECLARACION DE REFERENCIAS ============================================
+'=====================================================================================================
+Sub Reference_onChildChanged(snapshot As Object, child As String, tag As Object)
+	'Log($"Reference_onChildchanged(${child},${tag})"$)
+End Sub
+'Sub Reference_onChildAdded(snapshot As Object, child As String, tag As Object)
+'	Log($"Reference_onChildAdded(${child},${tag})"$)
+'	Dim snap As DataSnapshot
+'	snap.Initialize(snapshot)
+'	Select child
+'		Case "options"
+'			'Dim options As Map = snap.Value
+'			'Log("-------------------")
+'			'Log("--- OPTIONS -------")
+'			'Log(options)
+'			'Log("-------------------")
+'		Case "geoFire"
+'		Case "users"
+'			'Dim users As Map = snap.Value
+'			'Log("-------------------")
+'			'Log("--- USERS ---------")
+'			'Log(users)
+'			'Log("-------------------")
+'	End Select
+'	'Log("-------------------")
+'	'Log(snap.Key)
+'	'Log(snap.Value)
+'	'Log("---_onChildAdded()")
+'End Sub
+''Sub Reference_onChildChanged(snapshot As Object, child As String, tag As Object)
+''	'Log($"Reference_onChildchanged(${child},${tag})"$)
+''End Sub
+'
+'Sub Reference_onChildMoved(snapshot As Object, child As String, tag As Object)
+'	'Log($"Reference_onChildMoved(${child},${tag})"$)
+'End Sub
+'Sub Reference_onChildRemoved(snapshot As Object, tag As Object)
+'	'Log($"Reference_onChildRemoved(${tag})"$)
+'End Sub
+'
+Sub Reference_onDataChange(snapshot As Object, tag As Object)
+	Try
+
+		Log($"Reference_onDatachange(${tag})"$)
+		If snapshot <> Null Then
+			Dim snap As DataSnapshot
+			snap.Initialize(snapshot)
+			'Log("Snapshot value is NOT null. Ok. Need to check content")
+			If snap.Value Is Map Then
+				'Log("Value type Map: "& GetType(snap.Value))
+				Dim m As Map = snap.Value
+				'Log(m)
+				For Each k As String In m.Keys
+
+					Log(m.Get(k))
+				Next
+				
+				'fbdb = snap.Value
+				'Log("FBDBroot set...")
+			else if snap.Value Is List Then
+				'Log("Value type List: "& GetType(snap.Value))
+				Dim customers As List = snap.Value
+				Log("referenceListSize: "&customers.Size)
+			else if snap.Value Is String Then
+				'Log("Value type String: "& GetType(snap.Value))
+				Dim val As String = snap.Value
+				Log("Value="&val)
+			Else
+				Log("Value type unknown: "& GetType(snap.Value))
+			End If
+
+			'users/b0d0d7f9b81140c3/)
+			'Dim json As JSONParser
+			'json.Initialize(snap.Value)
+			'Dim root As Map = json.NextObject
+			'Log(json.NextObject)
+		Else
+			Log("Snapshot is null")
+		End If
+		'Dim keys As List = snap.Children
+		'Log(keys.Size)
+		'Log(snap.Children)
+			
+	Catch
+		Log(LastException)
+	End Try
+End Sub
+
+Sub Reference_onComplete(snapshot As Object, child As String, tag As Object)
+'	Log($"ref_onCancelled(${errorCode},${errorMessage})"$)
+'	If errObj <> Null Then
+'		Dim err As DatabaseError = errObj
+'	End If
+'	If dbref <> Null Then
+'		Dim ref As DatabaseReference = dbref
+	'End If
+
+End Sub
+'==========================================================================================
+'
+'-----------------------
+Sub save_signInMethod
+	'-----------------------
+	Dim MapConfig As Map
+	MapConfig.Initialize
+	MapConfig.Clear
+
+	MapConfig.Put("authSignInMethod", gs_signInMethod)
+	If gs_phoneNumber <> "" Then
+		MapConfig.Put("authPhoneNumber", gs_phoneNumber)
+	End If
+	File.WriteMap(File.DirInternal, "firebase.ini", MapConfig)
+End Sub
+
+
+'-----------------------
+Sub read_signInMethod
+	'-----------------------
+	Dim ls_tempKey As String
+	Dim MapConfig As Map
+	MapConfig.Initialize
+			
+	If File.Exists(File.DirInternal,"firebase.ini") = False Then
+		File.WriteMap(File.DirInternal, "firebase.ini", MapConfig)
+	End If
+	MapConfig.Clear
+	MapConfig = File.ReadMap(File.DirInternal,"firebase.ini")
+	ls_tempKey = ""
+	For i = 0 To MapConfig.Size - 1
+		ls_tempKey = MapConfig.GetKeyAt(i)
+		Select ls_tempKey
+			Case "authSignInMethod"
+				gs_signInMethod = MapConfig.GetValueAt(i)
+			Case "authPhoneNumber"
+				gs_phoneNumber = MapConfig.GetValueAt(i)
+		End Select
+	Next
+	Log ("Method: " & gs_signInMethod & CRLF & " Phone: " & gs_phoneNumber)
+End Sub
+
+
+ 
+'---------------------------------------------
+Sub CheckForGooglePlayServices As Boolean
+	'---------------------------------------------
+	Dim GoogleApiAvailablity As JavaObject
+	GoogleApiAvailablity = GoogleApiAvailablity.InitializeStatic("com.google.android.gms.common.GoogleApiAvailability").RunMethod("getInstance", Null)
+	Dim context As JavaObject
+	context.InitializeContext
+	If GoogleApiAvailablity.RunMethod("isGooglePlayServicesAvailable", Array(context)) <> 0 Then
+		GoogleApiAvailablity.RunMethod("makeGooglePlayServicesAvailable", Array(context))
+		Return False
+	End If
+	Return True
+End Sub
+
+'----------------------------
+Sub iv_exit_Click
+	'----------------------------
+	Activity.RemoveAllViews
+	Activity.LoadLayout("main2")
+End Sub
+
+'----------------------------
+Sub iv_exit_main2_Click
+	'----------------------------
+	Activity.RemoveAllViews
+	Activity.LoadLayout("Main")
+End Sub
+
+
+'**************************************************************************
+'****************************** Auth Google *****************************
+'**************************************************************************
+'----------------------------
+Sub b_googleLogin_Click
+	'----------------------------
+	auth.Initialize("auth")
+	auth.SignInWithGoogle
+End Sub
+
+'---------------------------------------------
+Sub Auth_SignedIn(User As FirebaseUser)
+	'---------------------------------------------
+	If User.DisplayName <> Null Then
+		Log("google SignedIn: " & User.email)
+		Log("UID: " & User.Uid)
+		Log("User name: " & User.DisplayName)
+		ToastMessageShow("Welcome: " & User.email , True)
+		gs_signInMethod = "googleLogin"
+
+'			save_signInMethod
+'			Activity.RemoveAllViews
+'			Activity.LoadLayout("main2")
+'			labelLogInMethod.Text = "Logged in with Google"
+'			LabelUser.Text =  "user:" &User.DisplayName & CRLF & "email: " & User.Email
+		
+		Activity.RemoveAllViews
+		Activity.LoadLayout("pant1")
+	End If
+
+End Sub
+
+'---------------------------------------------
+Sub auth_UserCreated(User As FirebaseUser)
+	'---------------------------------------------
+	ToastMessageShow("User created successfully!" , False)
+End Sub
+
+
+'---------------------------------------------
+
+'**************************************************************************
+'****************************** Auth phone *****************************
+'**************************************************************************
+'----------------------
+Sub b_phoneLogin_Click
+	'----------------------
+	authphone.Initialize("authphone")
+	Dim ls_phoneNumber As String = getPhoneNumber
+	If ls_phoneNumber <> "" Then gs_phoneNumber = ls_phoneNumber
+	If gs_phoneNumber = "" Then
+		setPhoneNumber
+	Else
+		authphone.startPhoneNumberVerification(gs_phoneNumber)
+	End If
+End Sub
+
+'--------------------------------
+Sub b_PhoneSignIn_Click
+	'--------------------------------
+	' sends verification code received by sms and manually inserted by user.
+	' Id device supports auto-verification this is not used
+	' authphone_phonesignedin event is triggered and app jumps to Main2 layout
+	Dim ls_code As String = fet_smsCode.Text
+	If fet_phonenumber.Text = "" Then
+		MsgboxAsync("phone number field empty!", "Alert...")
+	else If fet_smsCode.Text = "" Then
+		MsgboxAsync("sms code field empty!", "Alert...")
+	Else
+		authphone.verifyPhoneNumberWithCode(gs_verificationID, ls_code)
+	End If
+End Sub
+
+
+'--------------------------------
+Sub iv_exitPhoneLogin_Click
+	'--------------------------------
+	authphone.SignOut
+	Activity.RemoveAllViews
+	Activity.LoadLayout("main")
+End Sub
+
+
+'--------------------------------
+Sub getPhoneNumber As String
+	'--------------------------------
+	Dim pID As PhoneId
+	Dim phonenumber As String
+	phonenumber = pID.GetLine1Number
+	Return phonenumber
+End Sub
+
+
+'----------------------------------------
+Sub setPhoneNumber
+	'----------------------------------------
+	Activity.RemoveAllViews
+	Activity.LoadLayout("getphonenumber")
+	fet_setphonenumber.Text = "+"
+End Sub
+
+'--------------------------------
+Sub b_setPhoneNumber_Click
+	'--------------------------------
+	Dim ls_phoneNr As String = fet_setphonenumber.Text.Trim
+	If ls_phoneNr.StartsWith("+") = False  Then
+		MsgboxAsync("Please digit complete Phone number using +xx prefix!", "Alert...")
+		Return
+	else If fet_setphonenumber.Text.Length <= 9   Then
+		MsgboxAsync("Please digit complete Phone number using +xx prefix!", "Alert...")
+		Return
+	Else
+		gs_phoneNumber = fet_setphonenumber.text
+		authphone.startPhoneNumberVerification(gs_phoneNumber)
+		save_signInMethod
+	End If
+End Sub
+
+
+'--------------------------------
+Sub authphone_phoneverification(success As Boolean, info As String)
+	'--------------------------------
+	If success = True Then
+		ToastMessageShow("Phone number successfully verified!",True)
+		gb_phoneVerificationSuccess = True
+	Else
+		MsgboxAsync("Phone number verification failed!"& CRLF & "info: "& info, "Alert...")
+		gs_phoneNumber = ""
+		gs_signInMethod = ""
+		save_signInMethod
+		Activity.RemoveAllViews
+		Activity.LoadLayout("main")
+	End If
+End Sub
+
+'--------------------------------
+Sub authphone_phonesignedin(success As Boolean, User As FirebaseAuthPhoneUser, info As String)
+	'--------------------------------
+	If success = True Then
+		Log("Phone Signed In: ")
+		Activity.RemoveAllViews
+		Activity.LoadLayout("main2")
+		Log ("IsInitialized: " & User.IsInitialized)
+		Log ("ProviderId:" & User.ProviderId)
+		Log ("Uid:" & User.Uid)
+		gs_signInMethod = "phoneLogin"
+		save_signInMethod
+		Activity.RemoveAllViews
+		Activity.LoadLayout("main2")
+		labelLogInMethod.Text = "Logged in with Phone number"
+		LabelUser.Text =  "phone: " & gs_phoneNumber
+	
+	Else
+		Activity.RemoveAllViews
+		Activity.LoadLayout("main")
+	End If
+End Sub
+
+
+'--------------------------------
+Sub authphone_oncodesent(success As Boolean, verificationid As String)
+	'--------------------------------
+	If success = True And gb_phoneVerificationSuccess = False Then
+		gs_verificationID = verificationid
+		Activity.RemoveAllViews
+		Activity.LoadLayout("phonelogin")
+	End If
+	Log("authphone_oncodesent success" & success)
+End Sub
+
+
+'**************************************************************************
+'****************************** Auth email *****************************
+'**************************************************************************
+'----------------------------
+Sub b_emailLogin_Click
+	'----------------------------
+	authemail.Initialize("authemail")
+	Activity.RemoveAllViews
+	Activity.LoadLayout("emaillogin")
+	
+End Sub
+
+'--------------------------------
+Sub b_emailSignIn_Click
+	'--------------------------------
+	If checkEmail(fet_email.text) Then
+		authemail.signInWithEmailAndPassword(fet_email.Text.trim,fet_emailpassword.text.trim)
+		' *** AUTHEMAIL ****************
+		wait for authemail_signedin(success As Boolean, User As FirebaseAuthEmailUser, info As String)
+		If success Then
+			Log("SignedIn: " & User.Uid)
+			Log("User: " & User.DisplayName)
+			Log("eMail: " & User.Email)
+			Log("Anonymous: " & User.Anonymous)
+			Log("mail verified: " & User.EmailVerified)
+						
+			If User.EmailVerified = False Then
+				Do While True
+					User.sendEmailVerification
+					Msgbox2Async("En breve recibirá un correo electrónico a " & CRLF & _
+									"<" & fet_regemail.text & ">" &CRLF& _
+										 "Haz clic en el enlace del correo electrónico para activar tu cuenta!", "Alerta!", _
+										 "Reenviar el correo de confirmación","Reintentar el acceso" ,"Cancelar",LoadBitmap(File.DirAssets, "unreg_user.png"),True)
+					wait for MsgBox_result(response As Int)
+					If response = -1 Then
+
+					Else if response = -3 Then
+						Return
+					Else
+						Activity.RemoveAllViews
+						Activity.LoadLayout("main")
+						Exit
+					End If
+								
+				Loop
+			Else
+				Log("Firmado y verificado por el usuario: " & User.Email)
+				gs_signInMethod = "emailLogin"
+				save_signInMethod
+'							Activity.RemoveAllViews
+'							Activity.LoadLayout("main2")
+'				labelLogInMethod.Text = "Inició la sesión con el correo electrónico y la contraseña"
+'							LabelUser.Text =  "email: " &User.email 
+				Activity.RemoveAllViews
+				Activity.LoadLayout("pant1")
+			End If
+		Else
+			ToastMessageShow("Login failed!",True)
+			Log("Info: " & info)
+		End If
+	End If
+End Sub
+
+'----------------------------------------------------------------
+Sub authemail_signedinfailure(success As Boolean, info As String)
+	'----------------------------------------------------------------
+	Dim msg As String = ""
+	If info.Contains("El usuario puede haber sido eliminado") Or _
+			info.Contains("The email address is badly formatted") Then
+		msg = "Unknown user!"& CRLF &"Email <" & fet_email.text & "> doesn't exist in our records."
+	else if info.Contains("The password is invalid") Then
+		msg = "Invalid password!"
+	Else
+		ToastMessageShow("Login failed, retry!",True)
+	End If
+	If msg <> "" Then
+		Msgbox2Async(msg, "Error!","Retry","Register new account" ,"Cancel",LoadBitmap(File.DirAssets, "unreg_user.png"),True)
+		wait for MsgBox_result(response As Int)
+		If response = -1 Then
+			Return
+		Else if response = -3 Then
+			Activity.RemoveAllViews
+			Activity.LoadLayout("createEmailAccount")
+		Else
+			Activity.RemoveAllViews
+			Activity.LoadLayout("main")
+		End If
+	End If
+End Sub
+
+
+'--------------------------------------------------------------
+Sub authemail_createfailure(success As Boolean, info As String)
+	'--------------------------------------------------------------
+	If info.Contains("La dirección de correo electrónico ya está siendo utilizada por otra cuenta.")  Then
+		Msgbox2Async("Dirección de correo electrónico "& CRLF &"<" & fet_regemail.text & ">" & CRLF & _
+				     "ya está en uso por otro usuario!"& CRLF & _
+					 "presiona <reintentar> para corregir el correo electrónico."& CRLF & _
+					 "Si el correo electrónico es correcto vaya a <Ingresar>", "Alerta!", _
+					 "Reintenta", "Ingresar" , "Cancelar", _
+					 LoadBitmap(File.DirAssets, "unreg_user.png"),True)
+		wait for MsgBox_result(response As Int)
+		If response = -1 Then
+			Return
+		Else if response = -3 Then
+			Activity.RemoveAllViews
+			Activity.LoadLayout("emaillogin")
+		Else
+			Activity.RemoveAllViews
+			Activity.LoadLayout("main")
+		End If
+	Else
+		'ToastMessageShow("Login failed!",True)
+	End If
+
+End Sub
+
+'---------------------
+Sub lblRegister_Click
+	'---------------------
+	Activity.RemoveAllViews
+	Activity.LoadLayout("createEmailAccount")
+End Sub
+
+'--------------------------------
+Sub b_emailRegistration_Click
+	'--------------------------------
+	If fet_regemailpassword.Text.trim <> fet_regemailpassword2.Text.trim Then
+		MsgboxAsync("Las contraseñas no coinciden.","Error!")
+		fet_regemailpassword.RequestFocusAndShowKeyboard
+	Else if fet_regemail.Text.trim  = "" Then
+		MsgboxAsync("Introduce tu correo electrónico!.","Alerta!")
+	Else if fet_regemailpassword.Text.trim  = "" Or fet_regemailpassword2.Text.trim  = "" Then
+		MsgboxAsync("¡Tienes que escribir tu contraseña en los dos campos de la contraseña!","Alerta!")
+	Else
+		checkEmail(fet_regemail.Text)
+		authemail.createUserWithEmailAndPassword(fet_regemail.Text.trim,fet_regemailpassword.Text.trim)
+		wait for authemail_usercreated(success As Boolean, User As FirebaseAuthEmailUser, info As String)
+		'Log($"Authemail_SignedIn(${success},${info})"$)
+		If success Then
+			If User = Null Then
+				Log("null User SignedIn: ")
+			Else
+				Log("SignedIn: " & User.Uid)
+				Log("User: " & User.DisplayName)
+				Log("eMail: " & User.Email)
+				Log("Anonymous: " & User.Anonymous)
+				Log("email verified: " & User.EmailVerified)
+					
+				If User.EmailVerified = False Then
+					Do While True
+						User.sendEmailVerification
+						Msgbox2Async("En breve recibirá un correo electrónico a " & CRLF & _
+								"<" & fet_regemail.text & ">" &CRLF& _
+								 "Haz clic en el enlace del correo electrónico para activar tu cuenta!", "Alert!", _
+								 "Reenviar el correo de confirmación","Reintentar el acceso" ,"Cancelar",LoadBitmap(File.DirAssets, "unreg_user.png"),True)
+						wait for MsgBox_result(response As Int)
+						If response = -1 Then
+
+						Else if response = -3 Then
+							Return
+						Else
+							Activity.RemoveAllViews
+							Activity.LoadLayout("main")
+							Exit
+						End If
+							
+					Loop
+				End If
+			End If
+		        
+		Else
+			ToastMessageShow("Falló la entrada, ¡reintenta!",True)
+			Log("Info: " & info)
+		End If
+		
+		
+	End If
+End Sub
+
+
+
+'-------------------------------------
+Sub fet_regemailpassword2_EnterPressed
+	'-------------------------------------
+	If fet_regemailpassword.Text.trim <> fet_regemailpassword2.Text.trim Then
+		MsgboxAsync("Las contraseñas no coinciden.","Alert!")
+		fet_regemailpassword.RequestFocusAndShowKeyboard
+	End If
+End Sub
+
+
+'-------------------------
+Sub fet_email_EnterPressed
+	'-------------------------
+	Dim Valid As Boolean
+	Valid = Regex.IsMatch("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$", fet_email.Text.Trim)
+	If Not(Valid) Then
+		MsgboxAsync("Dirección de correo inválida", "Error")
+	End If
+End Sub
+
+'---------------------------------
+Sub fet_emailpassword_EnterPressed
+	'---------------------------------
+	checkEmail(fet_email.Text)
+	
+End Sub
+
+'---------------------------------------------
+Sub checkEmail(ps_email As String) As Boolean
+	'---------------------------------------------
+	Dim Valid As Boolean
+	Valid = Regex.IsMatch("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$", ps_email.Trim)
+	If Not(Valid) Then
+		MsgboxAsync("Dirección de correo inválida!", "Error")
+		Return False
+	End If
+	Return True
+
+End Sub
+
+
+'--------------------------
+Sub iv_exitEmailLogin_Click
+	'--------------------------
+	Activity.RemoveAllViews
+	Activity.LoadLayout("Main")
+End Sub
+
+'--------------------------------
+Sub authemail_passwordreset(success As Boolean, info As String) ' Works
+	'--------------------------------
+	Log($"AuthEmail_PasswordReset(${success})"$)
+	Log(info)
+End Sub
+ 
+ '--------------------------------
+Sub lblresetPassword_Click
+	'--------------------------------
+	Activity.RemoveAllViews
+	Activity.LoadLayout("resetPassword")
+
+	
+End Sub
+
+
+'--------------------------------
+Sub b_emailResetPassword_Click
+	'--------------------------------
+	If fet_emailReset.Text.trim  = "" Then
+		MsgboxAsync("Introduce tu correo electrónico! ","Error!")
+	else if fet_emailReset.Text.trim.Contains("@") = False Then
+		MsgboxAsync("¡Correo electrónico inválido! ","Error!")
+	Else
+		Do While True
+			authemail.sendPasswordResetEmail(fet_emailReset.Text.trim)
+			Msgbox2Async("El correo electrónico ha sido enviado a la dirección: " & CRLF & _
+			"<" & fet_emailReset.text & ">" &CRLF& _
+			 "establecer una nueva contraseña e intentarlo de nuevo!", "Alert!", _
+			 "Solicite el correo electrónico de nuevo","Ingresar" ,"Cancelar",LoadBitmap(File.DirAssets, "unreg_user.png"),True)
+			wait for MsgBox_result(response As Int)
+			If response = -1 Then
+				Exit
+			Else if response = -3 Then
+				Activity.RemoveAllViews
+				Activity.LoadLayout("emaillogin")
+				Exit
+
+			Else
+				Activity.RemoveAllViews
+				Activity.LoadLayout("main")
+				Exit
+			End If
+		Loop
+		
+	End If
+
+End Sub
+
+
+
+
+
+
+
+
+Sub iv_exitLogin_Click
+	Activity.RemoveAllViews
+	Activity.LoadLayout("emaillogin")
+End Sub
+'==================================================================
+'======= 
+'==================================================================
+Sub BtnSalir_Click
+	ExitApplication
+End Sub
+
+Sub BtnNivelT_Click
+	Activity.RemoveAllViews ''quita todas las pantallas despues del intro
+	Activity.LoadLayout("PantBtn1")
+	
+	
+	Dim i As Int
+	i=0
+	Do While i>-1
+		Dim link As String ="https://culterapp.firebaseio.com/CULTIVO/SENSORES_NIVEL.json"
+	
+		Dim job22 As HttpJob
+		job22.Initialize(link, Me)
+		job22.Download(link)
+		Wait For (job22) JobDone(job22 As HttpJob)
+	
+		If job22.Success Then
+			Dim res As String
+			res = job22.GetString
+			Dim parser As JSONParser
+			parser.Initialize(res)
+		
+			If res <> False Then
+				Dim m1 As Map =	parser.NextObject
+				LblNivel.Text= " " &  m1.Get("S_N1") & " % "
+				LblNivel2.Text= " " &  m1.Get("S_N2") & " % "
+				
+			End If
+		
+		
+		
+			Dim link2 As String ="https://culterapp.firebaseio.com/CULTIVO/VALVULAS.json"
+	
+			Dim job222 As HttpJob
+			job222.Initialize(link2, Me)
+			job222.Download(link2)
+			Wait For (job222) JobDone(job222 As HttpJob)
+	
+			If job222.Success Then
+				Dim res2 As String
+				res2 = job222.GetString
+				Dim parser2 As JSONParser
+				parser2.Initialize(res2)
+		
+				If res2 <> False Then
+					Dim m2 As Map =	parser2.NextObject
+				
+					LblEstado1.Text= " " &  m2.Get("VALVULA_I")
+					LblEstado2.Text= " " &  m2.Get("VALVULA_R")
+				End If
+			End If
+		End If
+		i=i+1
+	Loop
+End Sub
+
+
+Sub BtnOn_Click
+	
+	mapPostValues.Put("VALVULA_I", "ON")
+	keynode = "CULTIVO/VALVULAS"
+	childUpdates.Put(  "/" & keynode,  mapPostValues)
+	ref.push
+	ref.updateChildren( childUpdates)
+	
+End Sub
+
+Sub BtnOff_Click
+
+	mapPostValues.put("VALVULA_I", "OFF")
+	keynode = "CULTIVO/VALVULAS"
+	childUpdates.Put(  "/" & keynode,  mapPostValues)
+	ref.push
+	ref.updateChildren( childUpdates)
+	
+End Sub
+
+Sub BtnON2_Click
+
+	mapPostValues.Put("VALVULA_R", "ON")
+	keynode = "CULTIVO/VALVULAS"
+	childUpdates.Put(  "/" & keynode,  mapPostValues)
+	ref.push
+	ref.updateChildren( childUpdates)
+	
+End Sub
+
+Sub BtnOFF2_Click
+
+	mapPostValues.Put("VALVULA_R", "OFF")
+	keynode = "CULTIVO/VALVULAS"
+	childUpdates.Put(  "/" & keynode,  mapPostValues)
+	ref.updateChildren( childUpdates)
+	ref.push
+	
+End Sub
+'=====================================================================================================
+'============================= PANTALLA DE BOTON 2 ===================================================
+'=====================================================================================================
+
+
+Sub BtnAtras_Click
+	Activity.RemoveAllViews ''quita todas las pantallas despues del intro
+	Activity.LoadLayout("pant1")
+End Sub
+
+
+Sub BtnLuces_Click
+	Activity.RemoveAllViews ''quita todas las pantallas despues del intro
+	Activity.LoadLayout("PantBtn2")
+	
+	
+	Dim i As Int
+	i=0
+	Do While i>-1
+		Dim link As String ="https://culterapp.firebaseio.com/CULTIVO/LUCES.json"
+		
+	
+		Dim job22 As HttpJob
+		job22.Initialize(link, Me)
+		job22.Download(link)
+		Wait For (job22) JobDone(job22 As HttpJob)
+	
+		If job22.Success Then
+			Dim res As String
+			res = job22.GetString
+			Dim parser As JSONParser
+			parser.Initialize(res)
+		
+			If res <> False Then
+				Dim m3 As Map =	parser.NextObject
+				LblLuces.Text= " " &  m3.Get("TIPO1")
+				LblLuces2.Text= " " &  m3.Get("TIPO2")
+				LblLuces3.Text= " " &  m3.Get("TIPO3")
+				
+				
+			End If
+		
+		End If
+		i=i+1
+	Loop
+End Sub
+
+Sub BtnRojo_Click
+	mapPostValues1.Put("TIPO1", "ROJO")
+	Dim keynode1 As String = "CULTIVO/LUCES"
+	childUpdates1.Put(  "/" & keynode1,  mapPostValues1)
+	ref.push
+	ref.updateChildren( childUpdates1)
+End Sub
+
+Sub BtnAzul_Click
+	mapPostValues1.Put("TIPO1", "AZUL")
+	Dim keynode1 As String = "CULTIVO/LUCES"
+	childUpdates1.Put(  "/" & keynode1,  mapPostValues1)
+	ref.push
+	ref.updateChildren( childUpdates1)
+End Sub
+
+Sub BtnAmarillo_Click
+	mapPostValues1.Put("TIPO1", "AMARILLO")
+	Dim keynode1 As String = "CULTIVO/LUCES"
+	childUpdates1.Put(  "/" & keynode1,  mapPostValues1)
+	ref.push
+	ref.updateChildren( childUpdates1)
+End Sub
+
+Sub BtnAmarillo2_Click
+	
+	mapPostValues1.Put("TIPO2", "AMARILLO")
+	Dim keynode1 As String = "CULTIVO/LUCES"
+	childUpdates1.Put(  "/" & keynode1,  mapPostValues1)
+	ref.push
+	ref.updateChildren( childUpdates1)
+End Sub
+
+Sub BtnAzul2_Click
+	
+	mapPostValues1.Put("TIPO2", "AZUL")
+	Dim keynode1 As String = "CULTIVO/LUCES"
+	childUpdates1.Put(  "/" & keynode1,  mapPostValues1)
+	ref.push
+	ref.updateChildren( childUpdates1)
+End Sub
+
+Sub BtnRojo2_Click
+	
+	mapPostValues1.Put("TIPO2", "ROJO")
+	Dim keynode1 As String = "CULTIVO/LUCES"
+	childUpdates1.Put(  "/" & keynode1,  mapPostValues1)
+	ref.push
+	ref.updateChildren( childUpdates1)
+End Sub
+
+Sub BtnAmarillo3_Click
+
+	mapPostValues1.Put("TIPO3", "AMARILLO")
+	Dim keynode1 As String = "CULTIVO/LUCES"
+	childUpdates1.Put(  "/" & keynode1,  mapPostValues1)
+	ref.push
+	ref.updateChildren( childUpdates1)
+End Sub
+
+Sub BtnAzul3_Click
+	
+	mapPostValues1.Put("TIPO3", "AZUL")
+	Dim keynode1 As String = "CULTIVO/LUCES"
+	childUpdates1.Put(  "/" & keynode1,  mapPostValues1)
+	ref.push
+	ref.updateChildren( childUpdates1)
+End Sub
+
+Sub BtnRojo3_Click
+	
+	mapPostValues1.Put("TIPO3", "ROJO")
+	Dim keynode1 As String = "CULTIVO/LUCES"
+	childUpdates1.Put(  "/" & keynode1,  mapPostValues1)
+	ref.push
+	ref.updateChildren( childUpdates1)
+	
+End Sub
+
+Sub BtnOff1_Click
+	mapPostValues1.Put("TIPO1", "OFF")
+	Dim keynode1 As String = "CULTIVO/LUCES"
+	childUpdates1.Put(  "/" & keynode1,  mapPostValues1)
+	ref.push
+	ref.updateChildren( childUpdates1)
+End Sub
+
+Sub BtnOff3_Click
+	mapPostValues1.Put("TIPO3", "OFF")
+	Dim keynode1 As String = "CULTIVO/LUCES"
+	childUpdates1.Put(  "/" & keynode1,  mapPostValues1)
+	ref.push
+	ref.updateChildren( childUpdates1)
+End Sub
+
+Sub BtnOff_2_Click
+	mapPostValues1.Put("TIPO2", "OFF")
+	Dim keynode1 As String = "CULTIVO/LUCES"
+	childUpdates1.Put(  "/" & keynode1,  mapPostValues1)
+	ref.push
+	ref.updateChildren( childUpdates1)
+End Sub
+'=====================================================================================================
+'============================= PANTALLA BOTON 3 ======================================================
+'=====================================================================================================
+Sub BtnSensado_Click
+	Activity.RemoveAllViews ''quita todas las pantallas despues del intro
+	Activity.LoadLayout("PantBtn3")
+'	LblHora.Text=RHORA
+	Dim i As Int
+	i=0
+	Do While i>-1
+		
+		Dim link As String ="https://culterapp.firebaseio.com/CULTIVO/SENSORES.json"
+	
+		Dim job22 As HttpJob
+		job22.Initialize(link, Me)
+		job22.Download(link)
+		Wait For (job22) JobDone(job22 As HttpJob)
+	
+		If job22.Success Then
+			Dim res As String
+			res = job22.GetString
+			Dim parser As JSONParser
+			parser.Initialize(res)
+		
+			If res <> False Then
+				Dim m3 As Map =	parser.NextObject
+				LblSn1.Text= " " &  m3.Get("SENSOR1") & " % "
+				LblSn2.Text= " " &  m3.Get("SENSOR2") & " % "
+				LblSn3.Text= " " &  m3.Get("SENSOR3") & " % "
+			End If
+			
+				
+		End If
+		
+		
+		
+		Dim link As String ="https://culterapp.firebaseio.com/CULTIVO/TIEMPO2.json"
+	
+		Dim job22 As HttpJob
+		job22.Initialize(link, Me)
+		job22.Download(link)
+		Wait For (job22) JobDone(job22 As HttpJob)
+	
+		If job22.Success Then
+			Dim res As String
+			res = job22.GetString
+			Dim parser As JSONParser
+			parser.Initialize(res)
+		
+			If res <> False Then
+				Dim m1 As Map =	parser.NextObject
+				
+				'LblPrescripcion.Text= " " &  m1.Get("PRIEGO")
+				LblEstado3.Text= " " &  m1.Get("FECHA_RIEGO")
+				edtHoraAnt.Text= " " &  m1.Get("HORA_ANTERIOR")
+			End If
+		End If
+		
+		
+'		PRIEGO= edtPRiego.Text
+'		mapPostValues3.Put("PRIEGO", PRIEGO)
+'		Dim keynode3 As String = "CULTIVO/TIEMPO"
+'		childUpdates3.Put(  "/" & keynode3,  mapPostValues3)
+'		ref.push
+'		ref.updateChildren( childUpdates3)
+'		
+		i=i+1
+	Loop
+	
+End Sub
+
+
+
+Sub BtnOn_3_Click
+	mapPostValues3.Put("PREESCRIBIR", "ON")
+	Dim keynode3 As String = "CULTIVO/TIEMPO"
+	childUpdates3.Put(  "/" & keynode3,  mapPostValues3)
+	ref.push
+	ref.updateChildren( childUpdates3)
+	
+	Dim j As Int
+	j=0
+	Do While j>-1
+		
+	
+	Dim link As String ="https://culterapp.firebaseio.com/CULTIVO/TIEMPO2.json"
+	
+	Dim job22 As HttpJob
+	job22.Initialize(link, Me)
+	job22.Download(link)
+	Wait For (job22) JobDone(job22 As HttpJob)
+	
+	If job22.Success Then
+		Dim res As String
+		res = job22.GetString
+		Dim parser As JSONParser
+		parser.Initialize(res)
+		
+		If res <> False Then
+			Dim m1 As Map =	parser.NextObject
+				
+			LblPrescripcion.Text= " " &  m1.Get("PRIEGO")
+			'LblEstado3.Text= " " &  m1.Get("FECHA_RIEGO")
+		End If
+	End If
+		
+'		TIEMPO=edtHora.Text
+'		mapPostValues3.Put("HORA", TIEMPO)
+'		Dim keynode3 As String = "CULTIVO/TIEMPO"
+'		childUpdates3.Put(  "/" & keynode3,  mapPostValues3)
+'		ref.push
+'     	ref.updateChildren( childUpdates3)
+	
+     j=j+1
+	 Loop
+'Loop
+	
+	
+End Sub
+
+Sub BtnOff_3_Click
+	mapPostValues3.Put("PREESCRIBIR", "OFF")
+	Dim keynode3 As String = "CULTIVO/TIEMPO"
+	childUpdates3.Put(  "/" & keynode3,  mapPostValues3)
+	ref.push
+	ref.updateChildren( childUpdates3)
+End Sub
+
+
+Sub BtnGuardar_Click
+	
+	TIEMPO=edtHora.Text
+	mapPostValues3.Put("HORA", TIEMPO)
+	Dim keynode3 As String = "CULTIVO/TIEMPO"
+	childUpdates3.Put(  "/" & keynode3,  mapPostValues3)
+	ref.push
+	ref.updateChildren( childUpdates3)
+	
+End Sub
